@@ -4,98 +4,98 @@ import org.junit.Test
 class GerenciadorDeRotasTest{
 
     @Test
-    fun verificaQueExisteUmaRotaValidaInformadaDeApenasUmSegmento(){
+    fun verificaQueExisteUmaRotaInformadaComApenasUmSegmento(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertTrue(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/posts"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaDeApenasUmSegmento(){
+    fun verificaQueNaoExisteUmaRotaInformadaComApenasUmSegmento(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/naoexiste"))
     }
 
     @Test
-    fun verificaQueExisteUmaRotaValidaInformadaComParametro(){
+    fun verificaQueExisteUmaRotaInformadaComParametro(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertTrue(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/users/2/testando"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaComParametro(){
+    fun verificaQueNaoExisteUmaRotaInformadaComParametro(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/users/2"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaComUmaBarraNoFinal(){
+    fun verificaQueNaoExisteUmaRotaInformadaComUmaBarraNoFinal(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/posts/"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaComDuasBarras(){
+    fun verificaQueNaoExisteUmaRotaInformadaComDuasBarrasNoInicio(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("//posts"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaEmBranco(){
+    fun verificaQueNaoExisteUmaRotaInformadaEmBranco(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste(""))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaSemBarra(){
+    fun verificaQueNaoExisteUmaRotaInformadaSemBarra(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("posts"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaApenasComParametros(){
+    fun verificaQueNaoExisteUmaRotaInformadaApenasComParametros(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/1/2/3"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaApenasComBarras(){
+    fun verificaQueNaoExisteUmaRotaInformadaApenasComBarras(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("///"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaComBarraApenasNoFinal(){
+    fun verificaQueNaoExisteUmaRotaInformadaComBarraApenasNoFinal(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("posts/"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaSemBarraNoInicio(){
+    fun verificaQueNaoExisteUmaRotaInformadaSemBarraNoInicio(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("users/1/testando"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaInvalidaInformadaSemInformarOParametroRequerido(){
+    fun verificaQueNaoExisteUmaRotaInformadaSemInformarOParametroRequerido(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/users/{user_id}/testando"))
     }
 
     @Test
-    fun verificaQueExisteUmaRotaValidaInformandoParametroQualquer(){
+    fun verificaQueExisteUmaRotaInformandoParametroQualquer(){
         val urlsInformadas = listOf<String>("/users/{user_id}/testando","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertTrue(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/users/{usuario}/testando"))
@@ -109,21 +109,21 @@ class GerenciadorDeRotasTest{
     }
 
     @Test
-    fun verificaQueExisteUmaRotaValidaInformadaDeApenasParametros(){
+    fun verificaQueExisteUmaRotaInformadaApenasComParametros(){
         val urlsInformadas = listOf<String>("/{user_id}/{user_id}/{user_id}","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertTrue(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/1/2/3"))
     }
 
     @Test
-    fun verificaQueNaoExisteUmaRotaValidaInformandoParametrosIdenticosAosMapeados(){
+    fun verificaQueNaoExisteUmaRotaInformandoParametrosIdenticosAosMapeados(){
         val urlsInformadas = listOf<String>("/{user_id}/{user_id}/{user_id}","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertFalse(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/{user_id}/{user_id}/{user_id}"))
     }
 
     @Test
-    fun verificaQueExisteUmaRotaValidaInformandoParametroComoUltimoSegmento(){
+    fun verificaQueExisteUmaRotaInformandoParametroComoUltimoSegmento(){
         val urlsInformadas = listOf<String>("/users/edit/{user_id}","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertTrue(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/users/edit/2"))
@@ -137,14 +137,14 @@ class GerenciadorDeRotasTest{
     }
 
     @Test
-    fun verificaQueExisteUmaRotaValidaInformandoParametroComoPrimeiroSegmento(){
+    fun verificaQueExisteUmaRotaInformandoParametroComoPrimeiroSegmento(){
         val urlsInformadas = listOf<String>("/{user_id}/id/edit/","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertTrue(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/3/id/edit/"))
     }
 
     @Test
-    fun verificaQueExisteUmaRotaValidaInformandoDoisParametro(){
+    fun verificaQueExisteUmaRotaInformandoDoisParametros(){
         val urlsInformadas = listOf<String>("/{user_id}/{id}/edit/","/posts","/comments")
         val gerenciadorDeRotas = GerenciadorDeRotas(urlsInformadas)
         Assert.assertTrue(gerenciadorDeRotas.verificaSeARotaInformadaExiste("/{user}/3/edit/"))
